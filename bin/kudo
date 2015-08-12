@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+var minimist = require('minimist');
+
+function exec(argv) {
+    var options = minimist(
+        argv || [],
+        {
+            'string': ['_', 'since'],
+            'default': {
+                since: '3.months.ago'
+            }
+        }
+    );
+
+    var args = options._;
+    var name = args[0];
+    var since = args[1] || options.since;
+
+    if (!name) {
+        console.log('USAGE:');
+        console.log('\tscout <author> [--since=\'3.months.ago\']');
+        return;
+    }
+
+    require('../lib/cli').exec(name, since);
+}
+
+exec(process.argv.slice(2));
+

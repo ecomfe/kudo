@@ -1,0 +1,40 @@
+{
+  "name": "kudo",
+  "version": "0.0.1",
+  "description": "check someone's code quality in git repository",
+  "main": "lib/cli.js",
+  "bin": {
+    "kudo": "./bin/kudo"
+  },
+  "dependencies": {
+    "fecs": "*",
+    "minimist": "^1.1.0",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.2",
+    "jasmine-node": "^1.14.5"
+  },
+  "scripts": {
+    "lint": "fecs lib cli test/**/*.spec.js --type=js",
+    "coverage": "istanbul cover jasmine-node --captureExceptions test/**/*.spec.js",
+    "test": "npm run lint && npm run coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecomfe/kudo.git"
+  },
+  "keywords": ["diff", "git","lint","fecs"],
+  "author": {
+    "name": "chris",
+    "email": "wfsr@foxmail.com",
+    "url": "https://github.com/chriswong"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecomfe/kudo/issues"
+  },
+  "homepage": "https://github.com/ecomfe/kudo"
+}
