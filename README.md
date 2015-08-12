@@ -19,11 +19,14 @@ kudo is for checking someone's code quality in git repository.
 * in CLI
 
 	```shell
-	kudo
+	$ kudo <author> [3.months.ago]
+
+    $ kudo <author> [--since=3.months.ago]
 	```
 
 * in Node.js
 
 	```javascript
 	var kudo = require('kudo');
+    kudo.deduce('kiddo', '3.days.ago');
 	```
