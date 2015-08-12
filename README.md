@@ -16,7 +16,7 @@ kudo is for checking someone's code quality in git repository.
 
 ### Usage
 
-* in CLI
+#### in CLI
 
 	```shell
 	$ kudo <author> [3.months.ago]
@@ -24,7 +24,7 @@ kudo is for checking someone's code quality in git repository.
     $ kudo <author> [--since=3.months.ago]
 	```
 
-* in Node.js
+#### in Node.js
 
 	```javascript
 	var kudo = require('kudo');
