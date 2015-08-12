@@ -12,21 +12,21 @@ kudo is for checking someone's code quality in git repository.
 
 ### Install
 
-	npm i -g kudo
+> npm i -g kudo
 
 ### Usage
 
 #### in CLI
 
-	```shell
-	$ kudo <author> [3.months.ago]
+```shell
+$ kudo <author> [3.months.ago]
 
-    $ kudo <author> [--since=3.months.ago]
-	```
+$ kudo <author> [--since=3.months.ago]
+```
 
 #### in Node.js
 
-	```javascript
-	var kudo = require('kudo');
-    kudo.deduce('kiddo', '3.days.ago');
-	```
+```javascript
+var kudo = require('kudo');
+kudo.deduce('kiddo', '3.days.ago');
+```
