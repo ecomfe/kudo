@@ -2,7 +2,7 @@
 
 var minimist = require('minimist');
 
-function exec(argv) {
+function deduce(argv) {
     var options = minimist(
         argv || [],
         {
@@ -23,8 +23,8 @@ function exec(argv) {
         return;
     }
 
-    require('../lib/cli').exec(name, since);
+    require('../lib/cli').deduce(name, since);
 }
 
-exec(process.argv.slice(2));
+deduce(process.argv.slice(2));
 
