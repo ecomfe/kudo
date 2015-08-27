@@ -2,6 +2,14 @@
 
 var minimist = require('minimist');
 
+/**
+ * 显示 package.json 中的版本号
+ */
+function displayVersion() {
+    var pkg = require('../package');
+    console.log('%s %s', pkg.name, pkg.version);
+}
+
 function deduce(argv) {
     var options = minimist(
         argv || [],
@@ -9,9 +17,16 @@ function deduce(argv) {
             'string': ['_', 'since'],
             'default': {
                 since: '3.months.ago'
+            },
+            'alias': {
+                v: 'version'
             }
         }
     );
+
+    if (options.version) {
+        return displayVersion();
+    }
 
     var args = options._;
     var name = args[0];
