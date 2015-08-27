@@ -11,7 +11,7 @@
     "through2": "^2.0.0"
   },
   "peerDependencies": {
-    "fecs": "~0.4.4",
+    "fecs": "~0.4.4"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
