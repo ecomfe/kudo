@@ -1,17 +1,24 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 
-var minimist = require('minimist');
+let minimist = require('minimist');
+
+import {deduce} from '../lib/cli';
 
 /**
  * 显示 package.json 中的版本号
  */
 function displayVersion() {
-    var pkg = require('../package');
+    let pkg = require('../package');
     console.log('%s %s', pkg.name, pkg.version);
 }
 
-function deduce(argv) {
-    var options = minimist(
+/**
+ * 命令入口
+ *
+ * @param {?Array} argv 命令行参数
+ */
+function run(argv) {
+    let options = minimist(
         argv || [],
         {
             'string': ['_', 'since'],
@@ -28,9 +35,8 @@ function deduce(argv) {
         return displayVersion();
     }
 
-    var args = options._;
-    var name = args[0];
-    var since = args[1] || options.since;
+    let [name, since] = options._;
+    since = since || options.since;
 
     if (!name) {
         console.log('USAGE:');
@@ -38,8 +44,8 @@ function deduce(argv) {
         return;
     }
 
-    require('../lib/cli').deduce(name, since);
+    deduce(name, since);
 }
 
-deduce(process.argv.slice(2));
+run(process.argv.slice(2));
 
