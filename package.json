@@ -1,6 +1,6 @@
 {
   "name": "kudo",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "check someone's code quality in git repository",
   "main": "lib/cli.js",
   "bin": {
@@ -11,17 +11,29 @@
     "through2": "^2.0.0"
   },
   "peerDependencies": {
-    "fecs": "^0.4.5"
+    "fecs": "^0.4.5",
+    "babel": "^5.8.21"
   },
   "devDependencies": {
+    "babel-runtime": "^5.8.20",
     "coveralls": "^2.11.2",
     "istanbul": "^0.3.2",
     "jasmine-node": "^1.14.5"
   },
+  "babel": {
+    "stage": 2,
+    "modules": "common",
+    "compact": false,
+    "ast": false,
+    "sourceMaps": "inline",
+    "optional": ["runtime"],
+    "auxiliaryCommentBefore": "istanbul ignore next"
+  },
   "scripts": {
-    "lint": "fecs lib cli test/**/*.spec.js --type=js",
-    "coverage": "istanbul cover jasmine-node --captureExceptions test/**/*.spec.js",
-    "test": "npm run lint && npm run coverage",
+    "lint": "fecs lib test/**/*.spec.js --type=js",
+    "babel": "babel ./lib -d dist/lib && babel ./test -d dist/test",
+    "coverage": "istanbul cover jasmine-node --captureExceptions dist/test/**/*.spec.js",
+    "test": "npm run lint && npm run babel && npm run coverage rm -rf dist",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
