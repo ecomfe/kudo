@@ -22,6 +22,12 @@ kudo is for checking someone's code quality in git repository.
 $ kudo <author> [3.months.ago]
 
 $ kudo <author> [--since=3.months.ago]
+
+# lookup local configs for fecs
+$ kudo <author> [--lookup]
+
+# log git ccommands
+$ kudo <author> [--logit]
 ```
 
 #### in Node.js
