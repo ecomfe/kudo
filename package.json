@@ -1,6 +1,6 @@
 {
   "name": "kudo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "check someone's code quality in git repository",
   "main": "lib/cli.js",
   "bin": {
