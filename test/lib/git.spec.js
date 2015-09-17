@@ -4,6 +4,7 @@
  */
 
 import Git from '../../lib/git';
+import config from '../../lib/config';
 
 let git;
 beforeEach(function () {
@@ -38,9 +39,18 @@ describe('Git', function () {
         });
     });
 
-    xit('error', function (done) {
-        git.run('show', 'abcdefg').catch(function (error) {
-            console.error(error);
+    it('logit', function (done) {
+        spyOn(console, 'log');
+
+        config(['chris', '--logit']);
+        git.run(
+            'log', '-1',
+            '--author=' + config.options.author,
+            '--until=\'Wed Sep 9 01:01:45 2015 +0800\'',
+            '--pretty=format:%h,%ad'
+        ).then(function (output) {
+            expect(console.log).toHaveBeenCalled();
+            expect(output).toBe('0b151b2,Wed Sep 9 01:01:45 2015 +0800');
             done();
         });
     });

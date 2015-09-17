@@ -1,7 +1,6 @@
 #!/usr/bin/env babel-node
 
-let minimist = require('minimist');
-
+import config from '../lib/config';
 import {deduce} from '../lib/cli';
 
 /**
@@ -14,22 +13,9 @@ function displayVersion() {
 
 /**
  * 命令入口
- *
- * @param {?Array} argv 命令行参数
  */
-function run(argv) {
-    let options = minimist(
-        argv || [],
-        {
-            'string': ['_', 'since'],
-            'default': {
-                since: '3.months.ago'
-            },
-            'alias': {
-                v: 'version'
-            }
-        }
-    );
+function run() {
+    let options = config(process.argv.slice(2));
 
     if (options.version) {
         return displayVersion();
@@ -41,11 +27,12 @@ function run(argv) {
     if (!name) {
         console.log('USAGE:');
         console.log('\tscout <author> [--since=\'3.months.ago\']');
+        console.log('\tscout <author> [\'3.months.ago\']');
         return;
     }
 
     deduce(name, since);
 }
 
-run(process.argv.slice(2));
+run();
 

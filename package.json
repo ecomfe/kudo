@@ -7,8 +7,10 @@
     "kudo": "./bin/kudo"
   },
   "dependencies": {
+    "chalk": "^1.1.1",
     "minimist": "^1.1.0",
-    "through2": "^2.0.0"
+    "through2": "^2.0.0",
+    "tty-table": "^1.0.6"
   },
   "peerDependencies": {
     "fecs": "^0.4.5",
@@ -26,21 +28,28 @@
     "compact": false,
     "ast": false,
     "sourceMaps": "inline",
-    "optional": ["runtime"],
+    "optional": [
+      "runtime"
+    ],
     "auxiliaryCommentBefore": "istanbul ignore next"
   },
   "scripts": {
     "lint": "fecs lib test/**/*.spec.js --type=js",
     "babel": "babel ./lib -d dist/lib && babel ./test -d dist/test",
-    "coverage": "istanbul cover jasmine-node --captureExceptions dist/test/**/*.spec.js",
-    "test": "npm run lint && npm run babel && npm run coverage rm -rf dist",
+    "coverage": "istanbul cover jasmine-node --report text --captureExceptions dist/test/**/*.spec.js",
+    "test": "npm run lint && npm run babel && npm run coverage && rm -rf dist",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ecomfe/kudo.git"
   },
-  "keywords": ["diff", "git","lint","fecs"],
+  "keywords": [
+    "diff",
+    "git",
+    "lint",
+    "fecs"
+  ],
   "author": {
     "name": "chris",
     "email": "wfsr@foxmail.com",

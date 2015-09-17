@@ -28,7 +28,7 @@ describe('File', function () {
         expect(file.contents).toBeUndefined();
         file.read().then(function () {
             expect(file.contents).not.toBeUndefined();
-            expect(file.stat.total).toBe(78);
+            expect(file.stat.lines).toBe(78);
             done();
         });
     });
@@ -45,7 +45,7 @@ describe('File', function () {
 
         file.read().then(function () {
             expect(file.contents).not.toBeUndefined();
-            expect(file.stat.total).toBe(78);
+            expect(file.stat.lines).toBe(78);
             done();
         });
     });
